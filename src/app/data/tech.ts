@@ -6,12 +6,12 @@ export const technologies: ITech[] = [
     {
         name: 'Docker',
         creationDate: new Date('2013-03-20'),
-        image: '/assets/docker.svg',
+        image: 'https://upload.wikimedia.org/wikipedia/en/f/f4/Docker_logo.svg',
     },
     {
         name: 'Linux',
         creationDate: new Date('1991-08-17'),
-        image: '/assets/linux.png',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg',
     },
     {
         name: 'Microsoft Windows',
