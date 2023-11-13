@@ -11,15 +11,19 @@ export const isCorrect = (before: ITech, after: ITech) => {
 }
 
 
-export const randomTech = () => {
-    return technologies[Math.floor(Math.random() * (technologies.length - 1))];
+export const randomTech = (other: ITech) => {
+    let randomTech: ITech;
+    do {
+        randomTech = technologies[Math.floor(Math.random() * (technologies.length ))]
+    } while(randomTech.name === other.name);
+    return randomTech;
 }
 
 
 export const initialState: State = {
     gameState: GameState.gameMenu,
     left: technologies[0],
-    right: randomTech(),
+    right: randomTech(technologies[0]),
     score: 0,
     guesses: 0,
 }
@@ -27,7 +31,7 @@ export const initialState: State = {
 export const reducer = createReducer(
     initialState,
     on(gameStateActions.newGame, (state) => {
-        return {...state, gameState: GameState.gameMenu, score: 0, guesses: 0};
+        return {...state, gameState: GameState.gameMenu, score: 0, guesses: 0, left: technologies[0], right: randomTech(technologies[0])};
     }),
     on(gameStateActions.startGame, (state) => {
         if (state.gameState !== GameState.gameMenu) {
@@ -40,9 +44,9 @@ export const reducer = createReducer(
             return state;
         }
         if (Math.random() < 0.5) {
-            return {...state, gameState: GameState.inGame, left: randomTech()};
+            return {...state, gameState: GameState.inGame, left: randomTech(state.right)};
         } else {
-            return {...state, gameState: GameState.inGame, right: randomTech()};
+            return {...state, gameState: GameState.inGame, right: randomTech(state.left)};
         }
     }),
     on(gameStateActions.selectLeft, (state) => {

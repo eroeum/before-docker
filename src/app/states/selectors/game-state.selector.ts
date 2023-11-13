@@ -33,6 +33,8 @@ export const selectRight = createSelector(
 
 export const selectFormattedScore = createSelector(
     feature,
-    (state: State) => `${state.score}/${state.guesses}`,
+    (state: State) => {
+        return `${state.score}/${state.guesses}`;
+    }
 )
 

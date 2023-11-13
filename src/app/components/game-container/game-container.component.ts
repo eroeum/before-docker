@@ -37,7 +37,8 @@ export class GameContainerComponent {
   }
 
   public toDockerDate(date: Date): string {
-    return `${2013 - date.getFullYear()} BD`;
+    const delta = 2013 - date.getFullYear();
+    return delta < 0 ? `${-delta} AD` : `${delta} BD`;
   }
 
   public onSelect(which: string) {

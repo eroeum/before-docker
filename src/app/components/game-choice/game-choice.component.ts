@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {Store} from '@ngrx/store';
-import { Subscription } from 'rxjs';
 import * as gameStateActions from '../../states/actions/game-state.action';
 
 @Component({
@@ -8,16 +7,11 @@ import * as gameStateActions from '../../states/actions/game-state.action';
   templateUrl: './game-choice.component.html',
   styleUrls: ['./game-choice.component.scss']
 })
-export class GameChoiceComponent implements OnInit {
+export class GameChoiceComponent {
 
   constructor(
     private store: Store,
   ) {}
-
-  private subscriptions: Subscription[] = [];
-
-  ngOnInit() {
-  }
 
   public onStart() {
     this.store.dispatch(gameStateActions.startGame());

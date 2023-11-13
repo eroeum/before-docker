@@ -55,7 +55,9 @@ p {
 }
 
 img {
-    width: 40vw;
+    max-height: 40vh;
+    max-width: 35vw;
+    min-height: 10vh;
     z-index: -1;
     transition: transform 0.3s ease-in-out;
 }
@@ -78,12 +80,12 @@ img {
 
 .image-left {
     position: fixed;
-    left: -12.5vw;
+    left: 5vw;
 }
 
 .image-right {
     position: fixed;
-    right: -12.5vw;
+    right: 5vw;
 }
 
 .versus {

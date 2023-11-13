@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import {Store, select} from '@ngrx/store';
 import { GameState } from './models/state';
 import { selectGameState } from './states/selectors/game-state.selector';
@@ -9,7 +9,7 @@ import { selectGameState } from './states/selectors/game-state.selector';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'before-docker';
 
   public gameState$: Observable<GameState>;
@@ -20,8 +20,5 @@ export class AppComponent implements OnInit {
     private store: Store,
   ) {
     this.gameState$ = this.store.pipe(select(selectGameState));
-  }
-
-  ngOnInit(): void {
   }
 }
