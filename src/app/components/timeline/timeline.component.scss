@@ -1,0 +1,149 @@
+:host {
+  display: block;
+  flex: 0 0 88px;
+  background: rgba(10, 10, 14, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.timeline {
+  height: 88px;
+  position: relative;
+}
+
+.inner {
+  position: absolute;
+  inset: 0;
+  margin: 0 48px;
+}
+
+/* ─── Baseline ─── */
+.line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-50%);
+}
+
+/* ─── Decade tick marks ─── */
+.decade-tick {
+  position: absolute;
+  top: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+
+.tick-stem {
+  width: 1px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.tick-label {
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.25);
+  letter-spacing: 0.05em;
+  margin-top: 3px;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+/* ─── Tech markers ─── */
+.marker {
+  position: absolute;
+  top: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  animation: pop-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  z-index: 2;
+}
+
+.marker.above {
+  top: auto;
+  bottom: 50%;
+  flex-direction: column-reverse;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.75);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 3;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  white-space: nowrap;
+}
+
+.marker-name {
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.marker-year {
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+/* ─── Docker special ─── */
+.docker-marker .dot {
+  width: 12px;
+  height: 12px;
+  background: #2496ed;
+  box-shadow: 0 0 10px rgba(36, 150, 237, 0.7);
+}
+
+.docker-marker .marker-name {
+  color: #60b8f5;
+  font-size: 11px;
+}
+
+.docker-marker .marker-year {
+  color: rgba(96, 184, 245, 0.6);
+}
+
+/* ─── Animation ─── */
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+.marker.above {
+  @keyframes pop-in-above {
+    from {
+      opacity: 0;
+      transform: translateX(-50%) scale(0.3);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(-50%) scale(1);
+    }
+  }
+
+  animation-name: pop-in-above;
+}

@@ -1,0 +1,33 @@
+<div class="panel"
+     [class.disabled]="disabled()"
+     (click)="onSelect()"
+     role="button"
+     [attr.tabindex]="disabled() ? -1 : 0"
+     (keydown.enter)="onSelect()"
+     (keydown.space)="onSelect()">
+
+  @if (!tech().isLoading && tech().wiki?.thumbnailUrl) {
+    <img class="bg-image" [src]="tech().wiki!.thumbnailUrl!" [alt]="tech().name" />
+  }
+
+  @if (tech().isLoading) {
+    <div class="state-bg loading-bg">
+      <mat-spinner diameter="48"></mat-spinner>
+    </div>
+  } @else if (!tech().wiki?.thumbnailUrl) {
+    <div class="state-bg no-image-bg">
+      <mat-icon>memory</mat-icon>
+    </div>
+  }
+
+  <div class="gradient-overlay"></div>
+
+  <div class="content">
+    <h2 class="tech-name">{{ tech().name }}</h2>
+    @if (!disabled()) {
+      <button class="pick-btn" (click)="$event.stopPropagation(); onSelect()">
+        This one came first!
+      </button>
+    }
+  </div>
+</div>

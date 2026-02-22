@@ -1,0 +1,137 @@
+.panels-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  background: #0d0d0f;
+}
+
+.panels {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  position: relative;
+  transition: filter 0.35s ease;
+
+  &.dimmed {
+    filter: brightness(0.35);
+  }
+}
+
+.vs-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: white;
+  letter-spacing: 0.05em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+.initial-loading {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+
+  --mdc-circular-progress-active-indicator-color: rgba(255, 255, 255, 0.6);
+
+  p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.1rem;
+    margin: 0;
+  }
+}
+
+.gameover-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.gameover-card {
+  background: #1a1a2e;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 48px 40px;
+  max-width: 480px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+
+  h2 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+  }
+
+  .final-score {
+    margin: 0;
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.7);
+
+    strong {
+      color: white;
+    }
+  }
+}
+
+.trophy-icon {
+  font-size: 80px;
+  width: 80px;
+  height: 80px;
+  color: #ef5350;
+}
+
+.gameover-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.home-btn {
+  padding: 10px 24px;
+  border-radius: 4px;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  transition: border-color 0.2s, color 0.2s;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.6);
+    color: white;
+  }
+}

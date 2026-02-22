@@ -1,0 +1,48 @@
+<div class="backdrop">
+  <div class="overlay-card" [class.correct]="result().wasCorrect" [class.wrong]="!result().wasCorrect">
+    <div class="verdict">
+      @if (result().wasCorrect) {
+        <mat-icon class="verdict-icon correct-icon">check_circle</mat-icon>
+        <h2>Correct!</h2>
+      } @else {
+        <mat-icon class="verdict-icon wrong-icon">cancel</mat-icon>
+        <h2>Wrong!</h2>
+      }
+    </div>
+
+    <div class="tech-results">
+      <div class="tech-result" [class.picked]="result().userPickedLeft">
+        <strong>{{ result().leftTech.name }}</strong>
+        <span class="docker-date">{{ toDockerDate(result().leftTech.year) }}</span>
+        <span class="year">({{ result().leftTech.year }})</span>
+      </div>
+
+      <div class="vs-divider">vs</div>
+
+      <div class="tech-result" [class.picked]="!result().userPickedLeft">
+        <strong>{{ result().rightTech.name }}</strong>
+        <span class="docker-date">{{ toDockerDate(result().rightTech.year) }}</span>
+        <span class="year">({{ result().rightTech.year }})</span>
+      </div>
+    </div>
+
+    <div class="explanation">
+      @if (result().wasCorrect) {
+        <p>
+          You picked correctly!
+          <strong>{{ result().userPickedLeft ? result().leftTech.name : result().rightTech.name }}</strong>
+          came first.
+        </p>
+      } @else {
+        <p>
+          <strong>{{ result().userPickedLeft ? result().rightTech.name : result().leftTech.name }}</strong>
+          actually came first.
+        </p>
+      }
+    </div>
+
+    <button mat-flat-button color="primary" (click)="onNext()">
+      Next Round
+    </button>
+  </div>
+</div>

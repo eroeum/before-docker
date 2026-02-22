@@ -1,0 +1,126 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.overlay-card {
+  background: #1a1a2e;
+  border-radius: 20px;
+  padding: 40px 36px;
+  max-width: 520px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+
+  &.correct {
+    border-color: rgba(76, 175, 80, 0.5);
+  }
+
+  &.wrong {
+    border-color: rgba(244, 67, 54, 0.5);
+  }
+}
+
+.verdict {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  h2 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+  }
+}
+
+.verdict-icon {
+  font-size: 64px;
+  width: 64px;
+  height: 64px;
+}
+
+.correct-icon {
+  color: #66bb6a;
+}
+
+.wrong-icon {
+  color: #ef5350;
+}
+
+.tech-results {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.tech-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  min-width: 140px;
+  border: 1.5px solid transparent;
+  transition: border-color 0.2s;
+
+  &.picked {
+    border-color: rgba(63, 81, 181, 0.6);
+    background: rgba(63, 81, 181, 0.12);
+  }
+
+  strong {
+    font-size: 1rem;
+    color: white;
+  }
+
+  .docker-date {
+    font-size: 0.95rem;
+    color: #9fa8da;
+    font-weight: 600;
+  }
+
+  .year {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+.vs-divider {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.explanation {
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.65);
+
+  p {
+    margin: 0;
+  }
+
+  strong {
+    color: white;
+  }
+}

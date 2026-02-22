@@ -1,0 +1,15 @@
+<mat-toolbar class="score-toolbar">
+  <button mat-icon-button (click)="gameService.resetToMenu()" aria-label="Go home">
+    <mat-icon>home</mat-icon>
+  </button>
+  <span class="toolbar-title">Before Docker</span>
+  <span class="spacer"></span>
+  <div class="lives">
+    @for (i of [0, 1, 2]; track i) {
+      <mat-icon class="heart" [class.lost]="i >= gameService.lives()">
+        {{ i < gameService.lives() ? 'favorite' : 'favorite_border' }}
+      </mat-icon>
+    }
+  </div>
+  <span class="score-text">{{ gameService.score() }}</span>
+</mat-toolbar>

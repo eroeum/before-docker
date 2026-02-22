@@ -1,0 +1,53 @@
+<div class="panels-wrapper">
+  <app-score-display />
+
+  @if (gameService.leftTech() && gameService.rightTech()) {
+    <div class="panels" [class.dimmed]="gameService.phase() === GamePhase.RoundResult">
+      <app-tech-card
+        [tech]="gameService.leftTech()!"
+        [disabled]="gameService.phase() !== GamePhase.Playing"
+        (selected)="gameService.guess(true)"
+      />
+      <div class="vs-badge">VS</div>
+      <app-tech-card
+        [tech]="gameService.rightTech()!"
+        [disabled]="gameService.phase() !== GamePhase.Playing"
+        (selected)="gameService.guess(false)"
+      />
+    </div>
+  } @else if (gameService.phase() !== GamePhase.GameOver) {
+    <div class="initial-loading">
+      <mat-spinner diameter="64"></mat-spinner>
+      <p>Loading round...</p>
+    </div>
+  }
+
+  @if (gameService.phase() === GamePhase.RoundResult) {
+    <app-result-overlay
+      [result]="gameService.lastResult()!"
+      (next)="gameService.nextRound()"
+    />
+  }
+
+  <app-timeline [playedTechs]="gameService.playedTechs()" />
+
+  @if (gameService.phase() === GamePhase.GameOver) {
+    <div class="gameover-overlay">
+      <div class="gameover-card">
+        <mat-icon class="trophy-icon">heart_broken</mat-icon>
+        <h2>Game Over!</h2>
+        <p class="final-score">
+          You answered <strong>{{ gameService.score() }}</strong> correctly
+        </p>
+        <div class="gameover-actions">
+          <button mat-flat-button color="primary" (click)="gameService.startGame(categoryId)">
+            Play Again
+          </button>
+          <button class="home-btn" (click)="gameService.resetToMenu()">
+            Home
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+</div>

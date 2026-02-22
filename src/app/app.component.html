@@ -1,8 +1,0 @@
-<ng-container [ngSwitch]="gameState$ | async">
-    <ng-container *ngSwitchCase="GameState.gameMenu">
-        <app-game-choice></app-game-choice>
-    </ng-container>
-    <ng-container *ngSwitchDefault>
-        <app-game-container></app-game-container>
-    </ng-container>
-</ng-container>
