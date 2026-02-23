@@ -1,0 +1,27 @@
+<div class="timeline">
+  <div class="inner">
+    <div class="line"></div>
+
+    @for (year of DECADE_MARKS; track year) {
+      <div class="decade-tick" [style.left.%]="toPercent(year)">
+        <div class="tick-stem"></div>
+        <span class="tick-label">{{ year }}</span>
+      </div>
+    }
+
+    @for (marker of markers(); track $index) {
+      <div
+        class="marker"
+        [class.docker-marker]="marker.isDocker"
+        [class.above]="marker.above"
+        [style.left.%]="marker.position"
+      >
+        <div class="dot"></div>
+        <div class="label">
+          <span class="marker-name">{{ marker.name }}</span>
+          <span class="marker-year">{{ marker.year }}</span>
+        </div>
+      </div>
+    }
+  </div>
+</div>

@@ -1,9 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+// Import Angular Material prebuilt theme
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
 
-html, body { height: 100%; }
+// Custom CSS variables — always dark theme
+:root {
+  --bd-primary: #7986cb;
+  --bd-accent: #ff7043;
+  --bd-bg: #0d0d0f;
+  --bd-surface: #1a1a2e;
+  --bd-text-primary: rgba(255, 255, 255, 0.87);
+  --bd-text-secondary: rgba(255, 255, 255, 0.6);
+}
+
+// Global resets
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
 body {
-    background: #303030;
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-    color: #fff;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background: #0d0d0f;
+  color: var(--bd-text-primary);
 }

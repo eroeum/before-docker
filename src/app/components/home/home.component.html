@@ -1,0 +1,35 @@
+<div class="home-container">
+  <div class="hero">
+    <h1 class="title">Before Docker</h1>
+    <p class="subtitle">
+      Two technologies. Which one came first?<br />
+      Everything is measured relative to Docker (2013).
+    </p>
+    <div class="legend">
+      <span class="legend-pill bd">BD — Before Docker</span>
+      <span class="legend-pill ad">AD — After Docker</span>
+    </div>
+  </div>
+
+  <div class="categories">
+    @for (category of categories; track category.id) {
+      <div
+        class="category-tile"
+        (click)="play(category.id)"
+        role="button"
+        tabindex="0"
+        (keydown.enter)="play(category.id)"
+        (keydown.space)="play(category.id)"
+      >
+        <div class="tile-icon">
+          <mat-icon>{{ category.icon }}</mat-icon>
+        </div>
+        <div class="tile-info">
+          <h3 class="tile-name">{{ category.name }}</h3>
+          <p class="tile-desc">{{ category.description }}</p>
+        </div>
+        <mat-icon class="tile-arrow">chevron_right</mat-icon>
+      </div>
+    }
+  </div>
+</div>
